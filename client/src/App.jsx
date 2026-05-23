@@ -7,7 +7,7 @@ import Sidebar from "./components/Sidebar"
 import Editor from "./components/Editor"
 import Chat from "./components/Chat"
 
-const socket = io("http://localhost:5000")
+const socket = io("https://codecollab-backend-i1ns.onrender.com/")
 
 
 

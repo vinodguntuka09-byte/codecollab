@@ -34,16 +34,17 @@ app.use(express.json())
 
 
 // DATABASE CONNECTION
-mongoose.connect("mongodb://localhost:27017/codecollab")
+mongoose.connect("mongodb+srv://vinny09:Varun04@cluster0.d4e5xqo.mongodb.net/?appName=Cluster0")
   .then(() => {
+
     console.log("MongoDB connected ✅")
+
   })
   .catch((error) => {
+
     console.log(error)
+
   })
-
-
-
 // ROOM MODEL
 const Room = mongoose.model("Room", {
 
