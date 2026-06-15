@@ -8,6 +8,25 @@ CodeCollab allows developers to collaborate in real time through shared coding r
 
 The project demonstrates real-time communication using Socket.IO, frontend development with React, backend development with Node.js and Express, and database integration using MongoDB.
 
+## Screenshots
+
+### Home Screen
+
+![Home Screen](./screenshots/home.png)
+
+### Collaborative Editor
+
+![Collaborative Editor](./screenshots/editor.png)
+
+### Chat System
+
+![Chat System](./screenshots/chat.png)
+
+### Code Execution Output
+
+![Code Execution Output](./screenshots/output.png)
+
+
 ## Features
 
 ### Room Management
@@ -118,50 +137,6 @@ CODECOLLAB
 └── README.md
 ```
 
-### Folder Responsibilities
-
-#### client/
-
-Contains the React frontend application.
-
-#### client/src/components/
-
-Reusable UI components used throughout the application.
-
-#### Chat.jsx
-
-Handles real-time messaging between users in a room.
-
-#### Editor.jsx
-
-Provides the Monaco code editor and code execution functionality.
-
-#### Sidebar.jsx
-
-Manages room creation, room listing, and room selection.
-
-#### Navbar.jsx
-
-Displays the application's navigation interface.
-
-#### server/
-
-Contains the backend application.
-
-#### index.js
-
-Main server entry point responsible for:
-
-* Express server setup
-* Socket.IO configuration
-* MongoDB connection
-* Room APIs
-* Code execution APIs
-
-#### README.md
-
-Project documentation and setup guide.
-
 ## Installation and Setup
 
 ### Prerequisites
@@ -234,18 +209,6 @@ The backend will run on:
 http://localhost:5000
 ```
 
-### Database Setup
-
-Create a MongoDB Atlas cluster and obtain the connection string.
-
-Update the MongoDB connection string inside:
-
-```text
-server/index.js
-```
-
-Start the backend again after updating the connection string.
-
 ## Running the Application
 
 After starting both the frontend and backend servers:
@@ -298,95 +261,6 @@ Verify that the output is displayed correctly in the output section.
 * Chat messages are delivered instantly.
 * Room management functions correctly.
 * JavaScript code executes successfully.
-
-## Troubleshooting
-
-### CORS Error
-
-Example:
-
-```text
-Access to XMLHttpRequest has been blocked by CORS policy
-```
-
-Cause:
-
-* Frontend URL is not allowed by the backend CORS configuration.
-
-Solution:
-
-* Verify the Socket.IO and Express CORS configuration.
-* Ensure the frontend deployment URL is included in the allowed origins.
-
-### Socket.IO Connection Issues
-
-Symptoms:
-
-```text
-WebSocket connection failed
-```
-
-Possible Causes:
-
-* Backend server is not running.
-* Incorrect backend URL in the frontend.
-* Render service is sleeping or unavailable.
-
-Solution:
-
-* Verify the backend deployment URL.
-* Check Render deployment status.
-* Confirm Socket.IO client and server URLs match.
-
-### localhost API Errors
-
-Example:
-
-```text
-GET http://localhost:5000/... net::ERR_CONNECTION_REFUSED
-```
-
-Cause:
-
-* Frontend still contains local development URLs after deployment.
-
-Solution:
-
-Replace:
-
-```text
-http://localhost:5000
-```
-
-with:
-
-```text
-https://your-backend-url.onrender.com
-```
-
-for production deployments.
-
-### MongoDB Connection Issues
-
-Symptoms:
-
-* Rooms fail to load.
-* Backend crashes during startup.
-
-Solution:
-
-* Verify the MongoDB Atlas connection string.
-* Ensure network access is configured correctly.
-* Confirm database credentials are valid.
-
-### Deployment Issues
-
-If changes are not visible after deployment:
-
-1. Verify GitHub push was successful.
-2. Verify Render deployment completed successfully.
-3. Verify Vercel deployment completed successfully.
-4. Perform a hard refresh in the browser.
 
 ## Deployment Guide
 
@@ -461,6 +335,75 @@ Vercel Redeploys Frontend
 Application Updated
 ```
 
+
+## Troubleshooting
+
+### CORS Error
+
+Example:
+
+```text
+Access to XMLHttpRequest has been blocked by CORS policy
+```
+
+Cause:
+
+* Frontend URL is not allowed by the backend CORS configuration.
+
+Solution:
+
+* Verify the Socket.IO and Express CORS configuration.
+* Ensure the frontend deployment URL is included in the allowed origins.
+
+### Socket.IO Connection Issues
+
+Symptoms:
+
+```text
+WebSocket connection failed
+```
+
+Possible Causes:
+
+* Backend server is not running.
+* Incorrect backend URL in the frontend.
+* Render service is sleeping or unavailable.
+
+Solution:
+
+* Verify the backend deployment URL.
+* Check Render deployment status.
+* Confirm Socket.IO client and server URLs match.
+
+### localhost API Errors
+
+Example:
+
+```text
+GET http://localhost:5000/... net::ERR_CONNECTION_REFUSED
+```
+
+Cause:
+
+* Frontend still contains local development URLs after deployment.
+
+Solution:
+
+Replace:
+
+```text
+http://localhost:5000
+```
+
+with:
+
+```text
+https://your-backend-url.onrender.com
+```
+
+for production deployments.
+
+
 ## Future Improvements
 
 The following enhancements may be added in future versions of CodeCollab:
@@ -478,21 +421,43 @@ The following enhancements may be added in future versions of CodeCollab:
 * Dark/Light theme switching
 * Syntax support for additional programming languages
 
+## Author
 
-## Screenshots
+**Vinod Guntuka**
 
-### Home Screen
+CodeCollab was developed as a full-stack real-time collaborative coding platform to explore and strengthen skills in:
 
-![Home Screen](./screenshots/home.png)
+* React
+* Node.js
+* Express.js
+* Socket.IO
+* MongoDB
+* Git & GitHub
+* Vercel Deployment
+* Render Deployment
 
-### Collaborative Editor
+### Project Goals
 
-![Collaborative Editor](./screenshots/editor.png)
+The primary objective of this project was to build a collaborative environment where multiple users can:
 
-### Chat System
+* Create and join coding rooms
+* Collaborate on code in real time
+* Communicate through chat
+* Execute JavaScript code directly from the browser
 
-![Chat System](./screenshots/chat.png)
+This project also served as a practical learning experience in full-stack development, real-time communication, database integration, deployment workflows, and debugging production issues.
 
-### Code Execution Output
+### Acknowledgements
 
-![Code Execution Output](./screenshots/output.png)
+Special thanks to the open-source community and the developers behind:
+
+* React
+* Vite
+* Socket.IO
+* Monaco Editor
+* Express.js
+* MongoDB Atlas
+* Vercel
+* Render
+
+
