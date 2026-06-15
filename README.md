@@ -298,3 +298,201 @@ Verify that the output is displayed correctly in the output section.
 * Chat messages are delivered instantly.
 * Room management functions correctly.
 * JavaScript code executes successfully.
+
+## Troubleshooting
+
+### CORS Error
+
+Example:
+
+```text
+Access to XMLHttpRequest has been blocked by CORS policy
+```
+
+Cause:
+
+* Frontend URL is not allowed by the backend CORS configuration.
+
+Solution:
+
+* Verify the Socket.IO and Express CORS configuration.
+* Ensure the frontend deployment URL is included in the allowed origins.
+
+### Socket.IO Connection Issues
+
+Symptoms:
+
+```text
+WebSocket connection failed
+```
+
+Possible Causes:
+
+* Backend server is not running.
+* Incorrect backend URL in the frontend.
+* Render service is sleeping or unavailable.
+
+Solution:
+
+* Verify the backend deployment URL.
+* Check Render deployment status.
+* Confirm Socket.IO client and server URLs match.
+
+### localhost API Errors
+
+Example:
+
+```text
+GET http://localhost:5000/... net::ERR_CONNECTION_REFUSED
+```
+
+Cause:
+
+* Frontend still contains local development URLs after deployment.
+
+Solution:
+
+Replace:
+
+```text
+http://localhost:5000
+```
+
+with:
+
+```text
+https://your-backend-url.onrender.com
+```
+
+for production deployments.
+
+### MongoDB Connection Issues
+
+Symptoms:
+
+* Rooms fail to load.
+* Backend crashes during startup.
+
+Solution:
+
+* Verify the MongoDB Atlas connection string.
+* Ensure network access is configured correctly.
+* Confirm database credentials are valid.
+
+### Deployment Issues
+
+If changes are not visible after deployment:
+
+1. Verify GitHub push was successful.
+2. Verify Render deployment completed successfully.
+3. Verify Vercel deployment completed successfully.
+4. Perform a hard refresh in the browser.
+
+## Deployment Guide
+
+The application is deployed using:
+
+* GitHub for source code management
+* Render for backend hosting
+* Vercel for frontend hosting
+* MongoDB Atlas for database hosting
+
+### Backend Deployment (Render)
+
+1. Push backend code to GitHub.
+2. Create a new Web Service in Render.
+3. Connect the GitHub repository.
+4. Configure the backend service.
+5. Add the MongoDB Atlas connection string.
+6. Deploy the service.
+
+Example backend URL:
+
+```text id="rdr6aq"
+https://your-backend.onrender.com
+```
+
+### Frontend Deployment (Vercel)
+
+1. Push frontend code to GitHub.
+2. Import the repository into Vercel.
+3. Configure the frontend project.
+4. Deploy the application.
+
+Example frontend URL:
+
+```text id="8j5j1w"
+https://your-project.vercel.app
+```
+
+### Production Configuration
+
+Before deploying the frontend, replace local development URLs:
+
+Development:
+
+```text id="qjlwm9"
+http://localhost:5000
+```
+
+Production:
+
+```text id="lbzc83"
+https://your-backend.onrender.com
+```
+
+### Deployment Workflow
+
+```text id="g0tysj"
+Code Changes
+      ↓
+Git Add
+      ↓
+Git Commit
+      ↓
+Git Push
+      ↓
+GitHub
+      ↓
+Render Redeploys Backend
+      ↓
+Vercel Redeploys Frontend
+      ↓
+Application Updated
+```
+
+## Future Improvements
+
+The following enhancements may be added in future versions of CodeCollab:
+
+* User authentication and authorization
+* Private collaboration rooms
+* Persistent chat history
+* Persistent code storage
+* Multi-language code execution
+* User presence indicators (online/offline status)
+* Room invitation system
+* File upload and sharing
+* Code version history
+* Collaborative whiteboard support
+* Dark/Light theme switching
+* Syntax support for additional programming languages
+
+
+## Screenshots
+
+### Home Screen
+
+![Home Screen](./screenshots/home.png)
+
+### Collaborative Editor
+
+![Collaborative Editor](./screenshots/editor.png)
+
+### Chat System
+
+![Chat System](./screenshots/chat.png)
+
+### Code Execution Output
+
+![Code Execution Output](./screenshots/output.png)
