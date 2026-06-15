@@ -109,7 +109,7 @@ function Editor({ socket, selectedRoom }) {
     try {
 
       const response = await fetch(
-        "http://localhost:5000/run-code",
+        "https://codecollab-backend-i1ns.onrender.com/run-code",
         {
 
           method: "POST",

@@ -9,7 +9,7 @@ function Sidebar({ socket, selectedRoom, setSelectedRoom }) {
 
   const fetchRooms = () => {
 
-    fetch("http://localhost:5000/rooms")
+    fetch("https://codecollab-backend-i1ns.onrender.com/rooms")
       .then((response) => response.json())
       .then((data) => {
         setRooms(data)
@@ -33,7 +33,7 @@ function Sidebar({ socket, selectedRoom, setSelectedRoom }) {
 
 
 
-    fetch("http://localhost:5000/rooms", {
+    fetch("https://codecollab-backend-i1ns.onrender.com/rooms", {
 
       method: "POST",
 
