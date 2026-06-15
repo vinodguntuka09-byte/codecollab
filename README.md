@@ -245,3 +245,56 @@ server/index.js
 ```
 
 Start the backend again after updating the connection string.
+
+## Running the Application
+
+After starting both the frontend and backend servers:
+
+### Step 1: Open the Application
+
+Visit:
+
+```text
+http://localhost:5173
+```
+
+### Step 2: Enter a Username
+
+Provide a username to access the collaboration environment.
+
+### Step 3: Create or Join a Room
+
+* Create a new room using the room creation input.
+* Or join an existing room from the room list.
+
+### Step 4: Collaborate in Real Time
+
+Open the application in multiple browser tabs or devices.
+
+Verify that:
+
+* Code changes appear instantly for all connected users.
+* Room-based collaboration works correctly.
+
+### Step 5: Test the Chat System
+
+Send messages from one user and verify that they appear for other users in the same room.
+
+### Step 6: Execute JavaScript Code
+
+Write JavaScript code inside the editor.
+
+Click:
+
+```text
+Run Code
+```
+
+Verify that the output is displayed correctly in the output section.
+
+### Expected Behavior
+
+* Users in the same room share code changes.
+* Chat messages are delivered instantly.
+* Room management functions correctly.
+* JavaScript code executes successfully.
