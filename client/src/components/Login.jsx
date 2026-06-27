@@ -1,4 +1,49 @@
-function Login({ onShowRegister }) {
+import { useState } from "react"
+
+function Login({ onShowRegister, onLoginSuccess }) {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleLogin = async () => {
+
+    try {
+
+      const response = await fetch(
+        "https://codecollab-backend-i1ns.onrender.com/login",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            email,
+            password
+          })
+        }
+      )
+
+      const data = await response.json()
+
+      alert(data.message)
+
+      if (response.ok) {
+
+        onLoginSuccess(data.name)
+
+      }
+
+    }
+    catch (error) {
+
+      alert("Login failed")
+
+    }
+
+  }
+
   return (
     <div
       style={{
@@ -16,6 +61,8 @@ function Login({ onShowRegister }) {
       <input
         type="email"
         placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         style={{
           padding: "12px",
           marginTop: "15px",
@@ -27,6 +74,8 @@ function Login({ onShowRegister }) {
       <input
         type="password"
         placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         style={{
           padding: "12px",
           marginTop: "10px",
@@ -36,6 +85,7 @@ function Login({ onShowRegister }) {
       />
 
       <button
+        onClick={handleLogin}
         style={{
           marginTop: "15px",
           padding: "10px 20px"
@@ -51,6 +101,7 @@ function Login({ onShowRegister }) {
       <button onClick={onShowRegister}>
         Register
       </button>
+
     </div>
   )
 }

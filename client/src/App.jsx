@@ -75,6 +75,7 @@ function App() {
   return (
     <Login
       onShowRegister={() => setShowRegister(true)}
+      onLoginSuccess={(name) => setUsername(name)}
     />
   )
 }
