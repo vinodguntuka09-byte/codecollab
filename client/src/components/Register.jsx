@@ -46,19 +46,47 @@ function Register({ onShowLogin }) {
 
   }
 
-  return (
+ return (
+  <div
+    style={{
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background:
+        "linear-gradient(135deg,#0f172a,#1e293b,#312e81)"
+    }}
+  >
     <div
       style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        backgroundColor: "#0f172a",
+        width: "400px",
+        padding: "40px",
+        borderRadius: "24px",
+        background: "rgba(255,255,255,0.08)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
         color: "white"
       }}
     >
-      <h1>Create Account 🚀</h1>
+      <h1
+        style={{
+          textAlign: "center",
+          marginBottom: "10px"
+        }}
+      >
+        Create Account 🚀
+      </h1>
+
+      <p
+        style={{
+          textAlign: "center",
+          color: "#cbd5e1",
+          marginBottom: "30px"
+        }}
+      >
+        Join CodeCollab and start collaborating
+      </p>
 
       <input
         type="text"
@@ -66,10 +94,15 @@ function Register({ onShowLogin }) {
         value={name}
         onChange={(e) => setName(e.target.value)}
         style={{
-          padding: "12px",
-          marginTop: "15px",
-          width: "250px",
-          borderRadius: "8px"
+          width: "100%",
+          padding: "14px",
+          marginBottom: "15px",
+          borderRadius: "12px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.08)",
+          color: "white",
+          outline: "none",
+          boxSizing: "border-box"
         }}
       />
 
@@ -79,10 +112,15 @@ function Register({ onShowLogin }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         style={{
-          padding: "12px",
-          marginTop: "10px",
-          width: "250px",
-          borderRadius: "8px"
+          width: "100%",
+          padding: "14px",
+          marginBottom: "15px",
+          borderRadius: "12px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.08)",
+          color: "white",
+          outline: "none",
+          boxSizing: "border-box"
         }}
       />
 
@@ -92,33 +130,65 @@ function Register({ onShowLogin }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         style={{
-          padding: "12px",
-          marginTop: "10px",
-          width: "250px",
-          borderRadius: "8px"
+          width: "100%",
+          padding: "14px",
+          marginBottom: "20px",
+          borderRadius: "12px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.08)",
+          color: "white",
+          outline: "none",
+          boxSizing: "border-box"
         }}
       />
 
       <button
         onClick={handleRegister}
         style={{
-          marginTop: "15px",
-          padding: "10px 20px"
+          width: "100%",
+          padding: "14px",
+          border: "none",
+          borderRadius: "12px",
+          background:
+            "linear-gradient(90deg,#2563eb,#7c3aed)",
+          color: "white",
+          fontSize: "16px",
+          fontWeight: "bold",
+          cursor: "pointer"
         }}
       >
-        Register
+        Create Account
       </button>
 
-      <p style={{ marginTop: "20px" }}>
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: "20px",
+          color: "#cbd5e1"
+        }}
+      >
         Already have an account?
       </p>
 
-      <button onClick={onShowLogin}>
+      <button
+        onClick={onShowLogin}
+        style={{
+          width: "100%",
+          padding: "12px",
+          marginTop: "10px",
+          borderRadius: "12px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "transparent",
+          color: "white",
+          cursor: "pointer"
+        }}
+      >
         Login
       </button>
 
     </div>
-  )
+  </div>
+)
 }
 
 export default Register

@@ -1,8 +1,10 @@
 const express = require("express")
+const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const User = require("./models/User")
+const Message = require("./models/Message")
 const http = require("http")
 
 const { Server } = require("socket.io")
@@ -42,6 +44,7 @@ app.use(
   })
 )
 app.use(express.json())
+const JWT_SECRET = "codecollab_secret_key"
 
 //REGISTER API
 
@@ -126,11 +129,22 @@ if (!isMatch) {
 
 }
 
-    res.json({
-      message: "Login successful",
-      name: user.name
-    })
+  const token = jwt.sign(
+  {
+    userId: user._id,
+    email: user.email
+  },
+  JWT_SECRET,
+  {
+    expiresIn: "7d"
+  }
+)
 
+res.json({
+  message: "Login successful",
+  name: user.name,
+  token
+})
   }
   catch (error) {
 
@@ -187,12 +201,26 @@ io.on("connection", (socket) => {
 
 
   // CHAT MESSAGE
-  socket.on("send_message", (data) => {
+socket.on("send_message", async (data) => {
 
-    io.to(data.room).emit("receive_message", data)
+  const newMessage = new Message({
+
+    room: data.room,
+
+    username: data.username,
+
+    message: data.message
 
   })
 
+  await newMessage.save()
+
+  io.to(data.room).emit(
+    "receive_message",
+    data
+  )
+
+})
 
 
   // REAL-TIME CODE

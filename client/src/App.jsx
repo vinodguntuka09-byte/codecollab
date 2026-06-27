@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { io } from "socket.io-client"
 
@@ -23,7 +23,18 @@ function App() {
   // FINAL USERNAME
   const [username, setUsername] = useState("")
 
+useEffect(() => {
 
+  const savedUser =
+    localStorage.getItem("username")
+
+  if (savedUser) {
+
+    setUsername(savedUser)
+
+  }
+
+}, [])
 
   // INPUT VALUE
   const [usernameInput, setUsernameInput] = useState("")
@@ -85,7 +96,17 @@ function App() {
   return (
     <div>
 
-      <Navbar />
+      <Navbar
+  username={username}
+  onLogout={() => {
+
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+
+    setUsername("")
+
+  }}
+/>
 
 
 
