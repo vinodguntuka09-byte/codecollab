@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
+const User = require("./models/User")
 const http = require("http")
 
 const { Server } = require("socket.io")
@@ -22,14 +23,68 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
   cors: {
-    origin: "https://codecollab-three.vercel.app"
+    origin: [
+      "http://localhost:5173",
+      "https://codecollab-three.vercel.app"
+    ]
   }
 })
 
 
 
-app.use(cors())
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://codecollab-three.vercel.app"
+    ]
+  })
+)
 app.use(express.json())
+app.post("/register", async (req, res) => {
+
+  try {
+
+    const { name, email, password } = req.body
+
+    const existingUser = await User.findOne({
+      email
+    })
+
+    if (existingUser) {
+
+      return res.status(400).json({
+        message: "Email already exists"
+      })
+
+    }
+
+    const user = new User({
+
+      name,
+      email,
+      password
+
+    })
+
+    await user.save()
+
+    res.json({
+      message: "User registered successfully"
+    })
+
+  }
+  catch (error) {
+
+    console.log(error)
+
+    res.status(500).json({
+      message: "Server Error"
+    })
+
+  }
+
+})
 
 
 

@@ -2,10 +2,13 @@ import { useState } from "react"
 
 import { io } from "socket.io-client"
 
+import Login from "./components/Login"
+import Register from "./components/Register"
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 import Editor from "./components/Editor"
 import Chat from "./components/Chat"
+
 
 const socket = io("https://codecollab-backend-i1ns.onrender.com/")
 
@@ -15,7 +18,7 @@ function App() {
 
   const [selectedRoom, setSelectedRoom] = useState("")
 
-
+  const [showRegister, setShowRegister] = useState(false)
 
   // FINAL USERNAME
   const [username, setUsername] = useState("")
@@ -61,69 +64,20 @@ function App() {
   // LOGIN SCREEN
   if (username === "") {
 
+  if (showRegister) {
     return (
-
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          backgroundColor: "#0f172a",
-          color: "white"
-        }}
-      >
-
-        <h1>
-          Welcome to CodeCollab 🚀
-        </h1>
-
-
-
-        <input
-          type="text"
-          placeholder="Enter username..."
-          value={usernameInput}
-          onChange={(e) => setUsernameInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          style={{
-            padding: "12px",
-            marginTop: "15px",
-            width: "250px",
-            borderRadius: "8px",
-            border: "1px solid gray",
-            outline: "none",
-            fontSize: "16px",
-            backgroundColor: "#1e293b",
-            color: "white"
-          }}
-        />
-
-
-
-        <button
-          onClick={joinApp}
-          style={{
-            marginTop: "15px",
-            padding: "10px 20px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer"
-          }}
-        >
-
-          Join
-
-        </button>
-
-      </div>
-
+      <Register
+        onShowLogin={() => setShowRegister(false)}
+      />
     )
-
   }
+
+  return (
+    <Login
+      onShowRegister={() => setShowRegister(true)}
+    />
+  )
+}
 
 
 
