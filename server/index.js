@@ -1,4 +1,5 @@
 const express = require("express")
+const bcrypt = require("bcrypt")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const User = require("./models/User")
@@ -62,13 +63,18 @@ app.post("/register", async (req, res) => {
 
     }
 
-    const user = new User({
+    const hashedPassword = await bcrypt.hash(
+  password,
+  10
+)
 
-      name,
-      email,
-      password
+const user = new User({
 
-    })
+  name,
+  email,
+  password: hashedPassword
+
+})
 
     await user.save()
 
