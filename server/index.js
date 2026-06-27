@@ -41,6 +41,9 @@ app.use(
   })
 )
 app.use(express.json())
+
+//REGISTER API
+
 app.post("/register", async (req, res) => {
 
   try {
@@ -85,6 +88,51 @@ app.post("/register", async (req, res) => {
   }
 
 })
+
+//LOGIN API
+
+app.post("/login", async (req, res) => {
+
+  try {
+
+    const { email, password } = req.body
+
+    const user = await User.findOne({ email })
+
+    if (!user) {
+
+      return res.status(400).json({
+        message: "User not found"
+      })
+
+    }
+
+    if (user.password !== password) {
+
+      return res.status(400).json({
+        message: "Invalid password"
+      })
+
+    }
+
+    res.json({
+      message: "Login successful",
+      name: user.name
+    })
+
+  }
+  catch (error) {
+
+    console.log(error)
+
+    res.status(500).json({
+      message: "Server Error"
+    })
+
+  }
+
+})
+
 
 
 
